@@ -1,0 +1,88 @@
+@import "tailwindcss";
+
+:root {
+  --tyken-dark-brown: #322c1d;
+  --tyken-medium-brown: #7b5d1a;
+  --tyken-golden: #b8860b;
+  --tyken-golden-dark: #8b6914;
+  --tyken-light-golden: #a5965d;
+  --tyken-tan: #c3b98b;
+  --tyken-cream: #eae4ce;
+  --tyken-off-white: #f5f2e8;
+  
+  --background: var(--tyken-dark-brown);
+  --foreground: var(--tyken-tan);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-tyken-dark: #322c1d;
+  --color-tyken-medium: #7b5d1a;
+  --color-tyken-golden: #b8860b;
+  --color-tyken-golden-dark: #8b6914;
+  --color-tyken-light-golden: #a5965d;
+  --color-tyken-tan: #c3b98b;
+  --color-tyken-cream: #eae4ce;
+  --color-tyken-off-white: #f5f2e8;
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--tyken-dark-brown) url('/images/img1.jpg');
+  color: var(--tyken-tan);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  min-height: 100vh;
+}
+
+::selection {
+  background: var(--tyken-golden);
+  color: var(--tyken-cream);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--tyken-cream);
+  font-weight: 600;
+}
+
+a {
+  color: var(--tyken-light-golden);
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--tyken-golden);
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, var(--tyken-cream) 0%, var(--tyken-light-golden) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.bg-paper {
+  background: linear-gradient(
+    to bottom,
+    rgba(234, 228, 206, 0.95),
+    rgba(245, 242, 232, 0.98)
+  );
+}
+
+.card-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+}
