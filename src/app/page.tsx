@@ -161,7 +161,7 @@ export default function Home() {
             we&apos;re here to help you succeed.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button href="/opportunities" variant="secondary">View Opportunities</Button>
+            <Button href="/opportunities">View Opportunities</Button>
             <Button href="/contact" variant="outline">Get in Touch</Button>
           </div>
         </motion.div>
