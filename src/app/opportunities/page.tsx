@@ -1,10 +1,9 @@
 "use client";
 
-import Link from "next/link";
 import { motion } from "framer-motion";
 import { Sparkles, Users, TrendingUp, Shield, ArrowRight } from "lucide-react";
-
-const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
+import { PageHero, Button, Section, SectionHeader } from "@/components/ui";
+import { siteConfig } from "@/lib/constants";
 
 const benefits = [
   {
@@ -32,52 +31,27 @@ const benefits = [
 export default function OpportunitiesPage() {
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="relative py-20 md:py-32 overflow-hidden">
-        <div 
-          className="absolute inset-0 opacity-20"
-          style={{
-            backgroundImage: `url('${basePath}/images/img2.jpg')`,
-            backgroundRepeat: "repeat-x",
-            backgroundPosition: "top"
-          }}
-        />
-        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div 
-            className="text-center"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-          >
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-tyken-cream mb-6 leading-tight">
-              Opportunities
-            </h1>
-            <p className="text-xl md:text-2xl text-tyken-tan/90 max-w-3xl mx-auto leading-relaxed">
-              At The Tyken Group, our opportunities change on a daily basis. One thing, 
-              however, that never changes is our refusal to settle for mediocrity.
-            </p>
-          </motion.div>
-        </div>
-      </section>
+      <PageHero
+        title="Opportunities"
+        subtitle="At The Tyken Group, our opportunities change on a daily basis. One thing, however, that never changes is our refusal to settle for mediocrity."
+      />
 
-      {/* Content */}
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        {/* Main Content */}
+      <Section>
         <motion.div 
-          className="bg-tyken-cream/5 backdrop-blur-sm border border-tyken-medium/30 rounded-2xl p-8 md:p-12 mb-16"
+          className="bg-tyken-cream/5 backdrop-blur-sm border border-tyken-medium/30 rounded-2xl p-8 md:p-12"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          transition={{ duration: 0.6 }}
         >
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-2xl md:text-3xl font-bold text-tyken-cream mb-6">
               We&apos;re Looking for Exceptional Talent
             </h2>
-            <p className="text-lg text-tyken-tan/80 mb-6 leading-relaxed">
+            <p className="text-lg text-tyken-tan/80 mb-4 leading-relaxed">
               We work only with the most well-rounded, most talented, and most productive 
               professionals. If that&apos;s you — <strong className="text-tyken-cream">no matter what it is you do</strong> — we want to talk with you.
             </p>
-            <p className="text-tyken-tan/80 mb-8 leading-relaxed">
+            <p className="text-tyken-tan/80 leading-relaxed">
               Whether you&apos;re a project manager, software developer, technical writer, 
               tester, designer, marketing specialist, executive, salesperson, or 
               administrative professional — if you bring excellence to everything you do, 
@@ -85,47 +59,38 @@ export default function OpportunitiesPage() {
             </p>
           </div>
         </motion.div>
+      </Section>
 
-        {/* Benefits Grid */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-        >
-          <h2 className="text-2xl md:text-3xl font-bold text-tyken-cream text-center mb-12">
-            Why Work With Us
-          </h2>
-          <div className="grid md:grid-cols-2 gap-6">
-            {benefits.map((benefit, index) => (
-              <motion.div
-                key={index}
-                className="bg-tyken-cream/5 backdrop-blur-sm border border-tyken-medium/30 rounded-xl p-6 flex gap-4 card-hover"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
-              >
-                <div className="w-12 h-12 bg-tyken-golden/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <benefit.icon className="w-6 h-6 text-tyken-golden" />
-                </div>
-                <div>
-                  <h3 className="text-lg font-semibold text-tyken-cream mb-2">
-                    {benefit.title}
-                  </h3>
-                  <p className="text-tyken-tan/70 leading-relaxed">
-                    {benefit.description}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
+      <Section background="muted">
+        <SectionHeader title="Why Work With Us" />
+        <div className="grid md:grid-cols-2 gap-6">
+          {benefits.map((benefit, index) => (
+            <motion.div
+              key={index}
+              className="bg-tyken-cream/5 backdrop-blur-sm border border-tyken-medium/30 rounded-xl p-6 flex gap-4 card-hover"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+            >
+              <div className="w-12 h-12 bg-tyken-golden/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                <benefit.icon className="w-6 h-6 text-tyken-golden" />
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold text-tyken-cream mb-2">{benefit.title}</h3>
+                <p className="text-tyken-tan/80 leading-relaxed">{benefit.description}</p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </Section>
 
-        {/* Current Openings Notice */}
+      <Section background="accent">
         <motion.div 
-          className="mt-16 bg-tyken-medium/20 rounded-2xl p-8 md:p-10 text-center"
+          className="text-center"
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.8 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
         >
           <h2 className="text-2xl font-bold text-tyken-cream mb-4">
             Interested in Joining Our Team?
@@ -136,22 +101,14 @@ export default function OpportunitiesPage() {
             opportunities.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a 
-              href="mailto:seth@tykengroup.com"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-tyken-golden hover:bg-tyken-medium font-bold rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5" style={{ color: '#eae4ce' }}
-            >
+            <Button href={`mailto:${siteConfig.contact.email}`} external>
               Email Seth Directly
               <ArrowRight size={20} />
-            </a>
-            <Link 
-              href="/contact"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-white text-white font-bold rounded-lg transition-all duration-300 hover:bg-white hover:text-neutral-900"
-            >
-              Contact Page
-            </Link>
+            </Button>
+            <Button href="/contact" variant="outline">Contact Page</Button>
           </div>
         </motion.div>
-      </div>
+      </Section>
     </div>
   );
 }

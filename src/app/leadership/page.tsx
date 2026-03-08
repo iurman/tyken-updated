@@ -1,14 +1,13 @@
 "use client";
 
-import Link from "next/link";
 import { motion } from "framer-motion";
 import { Mail, Phone, Linkedin, MapPin, Quote } from "lucide-react";
-
-const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
+import { PageHero, Button, Section, SectionHeader } from "@/components/ui";
+import { siteConfig } from "@/lib/constants";
 
 const testimonials = [
   {
-    text: "Seth has provided contract management, leadership, conflict resolution, and guidance for a decade of my career. No matter the scenario, his advice taught me how to regain control, reset expectations, and grow relationships. Holidays, weekends, or middle of the night, he was always available and willing. Stepping up even for trivial requests. Remaining professional and calm, he cultured friendships and taught continuous improvement skills. Truly above and beyond any expectation or requirement. My sincere thank you for everything Seth, I am honored to have been part of your team.",
+    text: "Seth has provided contract management, leadership, conflict resolution, and guidance for a decade of my career. No matter the scenario, his advice taught me how to regain control, reset expectations, and grow relationships. Holidays, weekends, or middle of the night, he was always available and willing. Stepping up even for trivial requests. Remaining professional and calm, he cultured friendships and taught continuous improvement skills. Truly above and beyond any expectation or requirement.",
     author: "James P. Hutchinson"
   },
   {
@@ -17,180 +16,140 @@ const testimonials = [
   }
 ];
 
+const stats = [
+  { value: "20+", label: "Years in Industry" },
+  { value: "500+", label: "Professional Connections" },
+];
+
 export default function LeadershipPage() {
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="relative py-20 md:py-32 overflow-hidden">
-        <div 
-          className="absolute inset-0 opacity-20"
-          style={{
-            backgroundImage: `url('${basePath}/images/img2.jpg')`,
-            backgroundRepeat: "repeat-x",
-            backgroundPosition: "top"
-          }}
-        />
-        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div 
-            className="text-center"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-          >
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-tyken-cream mb-6 leading-tight">
-              Leadership
-            </h1>
-            <p className="text-xl md:text-2xl text-tyken-tan/90 max-w-3xl mx-auto leading-relaxed">
-              Meet the team behind The Tyken Group
-            </p>
-          </motion.div>
-        </div>
-      </section>
+      <PageHero
+        title="Leadership"
+        subtitle="Meet the team behind The Tyken Group"
+      />
 
-      {/* Content */}
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        {/* Seth Sigel Profile */}
+      <Section>
         <motion.div 
-          className="bg-tyken-cream/5 backdrop-blur-sm border border-tyken-medium/30 rounded-2xl p-8 md:p-12 mb-16"
+          className="bg-tyken-cream/5 backdrop-blur-sm border border-tyken-medium/30 rounded-2xl p-8 md:p-12"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          transition={{ duration: 0.6 }}
         >
           <div className="grid md:grid-cols-3 gap-8">
-            {/* Profile Info */}
             <div className="md:col-span-2">
-              <div className="flex items-center gap-2 text-tyken-golden text-sm font-medium mb-2">
-                <span>PRESIDENT & FOUNDER</span>
+              <div className="text-tyken-golden text-sm font-medium mb-2 tracking-wide">
+                PRESIDENT & FOUNDER
               </div>
-              <h2 className="text-3xl md:text-4xl font-bold text-tyken-cream mb-6">
-                Seth Sigel
-              </h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-tyken-cream mb-6">Seth Sigel</h2>
               
-              <div className="prose prose-lg max-w-none">
-                <p className="text-tyken-tan/80 mb-4 leading-relaxed">
+              <div className="space-y-4 text-tyken-tan/80 leading-relaxed">
+                <p>
                   Seth Sigel started the Tyken Group in 2006, determined to bring the highest 
                   levels of customer service to Puget Sound.
                 </p>
-                <p className="text-tyken-tan/80 mb-4 leading-relaxed">
+                <p>
                   A graduate of the University of Connecticut, Seth began his career in sales 
                   in Boston and moved to Seattle in 1999. He was a district manager for payroll 
                   giant ADP and a regional sales manager for Monster.com before he began his 
                   own agency just outside of Seattle.
                 </p>
-                <p className="text-tyken-tan/80 mb-6 leading-relaxed">
+                <p>
                   He believes in long-term business relationships built on trust and on action, 
                   and would love to hear from you.
                 </p>
               </div>
 
-              {/* Contact Info */}
-              <div className="flex flex-wrap gap-4 mt-8">
+              <div className="flex flex-wrap gap-3 mt-8">
                 <a 
-                  href="tel:+12068513894"
-                  className="inline-flex items-center gap-2 px-4 py-2 bg-tyken-golden/20 hover:bg-tyken-golden/30 text-tyken-cream rounded-lg transition-colors"
+                  href={`tel:${siteConfig.contact.phone.replace(/\D/g, '')}`}
+                  className="inline-flex items-center gap-2 px-4 py-2 bg-tyken-golden/20 hover:bg-tyken-golden/30 text-tyken-cream rounded-lg transition-colors text-sm"
                 >
-                  <Phone size={18} />
-                  206.851.3894
+                  <Phone size={16} />
+                  {siteConfig.contact.phoneDisplay}
                 </a>
                 <a 
-                  href="mailto:seth@tykengroup.com"
-                  className="inline-flex items-center gap-2 px-4 py-2 bg-tyken-golden/20 hover:bg-tyken-golden/30 text-tyken-cream rounded-lg transition-colors"
+                  href={`mailto:${siteConfig.contact.email}`}
+                  className="inline-flex items-center gap-2 px-4 py-2 bg-tyken-golden/20 hover:bg-tyken-golden/30 text-tyken-cream rounded-lg transition-colors text-sm"
                 >
-                  <Mail size={18} />
-                  seth@tykengroup.com
+                  <Mail size={16} />
+                  {siteConfig.contact.email}
                 </a>
                 <a 
-                  href="https://www.linkedin.com/in/sethsigel/"
+                  href={siteConfig.social.linkedinPersonal}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-4 py-2 bg-tyken-golden/20 hover:bg-tyken-golden/30 text-tyken-cream rounded-lg transition-colors"
+                  className="inline-flex items-center gap-2 px-4 py-2 bg-tyken-golden/20 hover:bg-tyken-golden/30 text-tyken-cream rounded-lg transition-colors text-sm"
                 >
-                  <Linkedin size={18} />
+                  <Linkedin size={16} />
                   LinkedIn
                 </a>
               </div>
             </div>
 
-            {/* Stats/Highlights */}
-            <div className="space-y-6">
-              <div className="bg-tyken-dark/50 rounded-xl p-6 text-center">
-                <div className="text-4xl font-bold text-tyken-golden mb-2">20+</div>
-                <div className="text-tyken-tan/80 text-sm">Years in Industry</div>
-              </div>
-              <div className="bg-tyken-dark/50 rounded-xl p-6 text-center">
-                <div className="text-4xl font-bold text-tyken-golden mb-2">500+</div>
-                <div className="text-tyken-tan/80 text-sm">Professional Connections</div>
-              </div>
+            <div className="space-y-4">
+              {stats.map((stat, index) => (
+                <div key={index} className="bg-tyken-dark/50 rounded-xl p-6 text-center">
+                  <div className="text-4xl font-bold text-tyken-golden mb-2">{stat.value}</div>
+                  <div className="text-tyken-tan/80 text-sm">{stat.label}</div>
+                </div>
+              ))}
               <div className="bg-tyken-dark/50 rounded-xl p-6">
                 <div className="flex items-center gap-2 text-tyken-tan/80 text-sm">
                   <MapPin size={16} className="text-tyken-golden" />
-                  Woodinville, Washington
+                  {siteConfig.contact.location}
                 </div>
               </div>
             </div>
           </div>
         </motion.div>
+      </Section>
 
-        {/* Testimonials */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-        >
-          <h2 className="text-2xl md:text-3xl font-bold text-tyken-cream text-center mb-12">
-            What People Say
-          </h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <motion.div
-                key={index}
-                className="bg-tyken-cream/5 backdrop-blur-sm border border-tyken-medium/30 rounded-xl p-6 md:p-8 relative"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
-              >
-                <Quote className="absolute top-6 right-6 w-8 h-8 text-tyken-golden/20" />
-                <p className="text-tyken-tan/80 leading-relaxed mb-6 relative z-10">
-                  &quot;{testimonial.text}&quot;
-                </p>
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-tyken-golden/20 rounded-full flex items-center justify-center">
-                    <span className="text-tyken-golden font-semibold">
-                      {testimonial.author.charAt(0)}
-                    </span>
-                  </div>
-                  <div>
-                    <div className="text-tyken-cream font-medium">
-                      {testimonial.author}
-                    </div>
-                    <div className="text-tyken-tan/60 text-sm">
-                      via LinkedIn
-                    </div>
-                  </div>
+      <Section background="muted">
+        <SectionHeader title="What People Say" />
+        <div className="grid md:grid-cols-2 gap-8">
+          {testimonials.map((testimonial, index) => (
+            <motion.div
+              key={index}
+              className="bg-tyken-cream/5 backdrop-blur-sm border border-tyken-medium/30 rounded-xl p-6 md:p-8 relative"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+            >
+              <Quote className="absolute top-6 right-6 w-8 h-8 text-tyken-golden/20" />
+              <p className="text-tyken-tan/80 leading-relaxed mb-6">
+                &quot;{testimonial.text}&quot;
+              </p>
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 bg-tyken-golden/20 rounded-full flex items-center justify-center">
+                  <span className="text-tyken-golden font-semibold">
+                    {testimonial.author.charAt(0)}
+                  </span>
                 </div>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
+                <div>
+                  <div className="text-tyken-cream font-medium">{testimonial.author}</div>
+                  <div className="text-tyken-tan/60 text-sm">via LinkedIn</div>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </Section>
 
-        {/* CTA */}
+      <Section>
         <motion.div 
-          className="mt-16 text-center"
+          className="text-center"
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.7 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
         >
           <p className="text-lg text-tyken-tan/80 mb-6">
             Ready to connect with Seth and the Tyken Group team?
           </p>
-          <Link 
-            href="/contact"
-            className="inline-flex items-center justify-center px-8 py-4 bg-tyken-golden hover:bg-tyken-medium font-bold rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5" style={{ color: '#eae4ce' }}
-          >
-            Get in Touch
-          </Link>
+          <Button href="/contact">Get in Touch</Button>
         </motion.div>
-      </div>
+      </Section>
     </div>
   );
 }

@@ -1,30 +1,21 @@
 @import "tailwindcss";
 
 :root {
-  --tyken-dark-brown: #322c1d;
-  --tyken-medium-brown: #7b5d1a;
+  --tyken-dark: #322c1d;
+  --tyken-medium: #7b5d1a;
   --tyken-golden: #b8860b;
-  --tyken-golden-dark: #8b6914;
   --tyken-light-golden: #a5965d;
   --tyken-tan: #c3b98b;
   --tyken-cream: #eae4ce;
-  --tyken-off-white: #f5f2e8;
-  
-  --background: var(--tyken-dark-brown);
-  --foreground: var(--tyken-tan);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-tyken-dark: #322c1d;
-  --color-tyken-medium: #7b5d1a;
-  --color-tyken-golden: #b8860b;
-  --color-tyken-golden-dark: #8b6914;
-  --color-tyken-light-golden: #a5965d;
-  --color-tyken-tan: #c3b98b;
-  --color-tyken-cream: #eae4ce;
-  --color-tyken-off-white: #f5f2e8;
+  --color-tyken-dark: var(--tyken-dark);
+  --color-tyken-medium: var(--tyken-medium);
+  --color-tyken-golden: var(--tyken-golden);
+  --color-tyken-light-golden: var(--tyken-light-golden);
+  --color-tyken-tan: var(--tyken-tan);
+  --color-tyken-cream: var(--tyken-cream);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
@@ -38,7 +29,7 @@ html {
 }
 
 body {
-  background: var(--tyken-dark-brown);
+  background: var(--tyken-dark);
   color: var(--tyken-tan);
   font-family: var(--font-sans), system-ui, sans-serif;
   min-height: 100vh;
@@ -63,19 +54,26 @@ a:hover {
   color: var(--tyken-golden);
 }
 
-.text-gradient {
-  background: linear-gradient(135deg, var(--tyken-cream) 0%, var(--tyken-light-golden) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+.container-main {
+  max-width: 72rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
-.bg-paper {
-  background: linear-gradient(
-    to bottom,
-    rgba(234, 228, 206, 0.95),
-    rgba(245, 242, 232, 0.98)
-  );
+@media (min-width: 640px) {
+  .container-main {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-main {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
 }
 
 .card-hover {

@@ -5,8 +5,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
-
-const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
+import { basePath, siteConfig } from "@/lib/constants";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -21,22 +20,22 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 bg-tyken-dark/95 backdrop-blur-sm border-b border-tyken-medium/30">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container-main">
         <div className="flex items-center justify-between h-20">
           <Link href="/" className="flex items-center gap-3 group">
             <Image
               src={`${basePath}/images/logo.png`}
-              alt="The Tyken Group"
+              alt={siteConfig.name}
               width={60}
               height={60}
               className="rounded transition-transform group-hover:scale-105"
             />
             <div className="hidden sm:block">
               <h1 className="text-xl font-semibold text-tyken-cream tracking-tight">
-                The Tyken Group
+                {siteConfig.name}
               </h1>
               <p className="text-xs text-tyken-tan/80 tracking-widest uppercase">
-                A Full-Service Consultancy
+                {siteConfig.tagline}
               </p>
             </div>
           </Link>
