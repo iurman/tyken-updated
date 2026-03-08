@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { type ReactNode } from "react";
+import { type ReactNode, type CSSProperties } from "react";
 
 interface ButtonProps {
   children: ReactNode;
@@ -11,10 +11,17 @@ interface ButtonProps {
   fullWidth?: boolean;
 }
 
-const variants = {
-  primary: "bg-tyken-golden hover:bg-tyken-medium text-tyken-cream font-bold shadow-lg hover:shadow-xl",
-  secondary: "bg-white hover:bg-tyken-cream text-neutral-900 font-bold",
-  outline: "border-2 border-white text-white font-bold hover:bg-white hover:text-neutral-900",
+const variantStyles: Record<string, { className: string; style?: CSSProperties }> = {
+  primary: { 
+    className: "bg-tyken-golden hover:bg-tyken-medium font-bold shadow-lg hover:shadow-xl",
+    style: { color: '#eae4ce' }
+  },
+  secondary: { 
+    className: "bg-white hover:bg-tyken-cream text-neutral-900 font-bold" 
+  },
+  outline: { 
+    className: "border-2 border-white text-white font-bold hover:bg-white hover:text-neutral-900" 
+  },
 };
 
 export function Button({ 
@@ -26,25 +33,26 @@ export function Button({
   external = false,
   fullWidth = false,
 }: ButtonProps) {
-  const baseStyles = `inline-flex items-center justify-center gap-2 px-8 py-4 rounded-lg transition-all duration-300 hover:-translate-y-0.5 ${variants[variant]} ${fullWidth ? "w-full" : ""} ${className}`;
+  const { className: variantClass, style } = variantStyles[variant];
+  const baseStyles = `inline-flex items-center justify-center gap-2 px-8 py-4 rounded-lg transition-all duration-300 hover:-translate-y-0.5 ${variantClass} ${fullWidth ? "w-full" : ""} ${className}`;
 
   if (href) {
     if (external) {
       return (
-        <a href={href} target="_blank" rel="noopener noreferrer" className={baseStyles}>
+        <a href={href} target="_blank" rel="noopener noreferrer" className={baseStyles} style={style}>
           {children}
         </a>
       );
     }
     return (
-      <Link href={href} className={baseStyles}>
+      <Link href={href} className={baseStyles} style={style}>
         {children}
       </Link>
     );
   }
 
   return (
-    <button onClick={onClick} className={baseStyles}>
+    <button onClick={onClick} className={baseStyles} style={style}>
       {children}
     </button>
   );

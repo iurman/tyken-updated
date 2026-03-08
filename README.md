@@ -1,36 +1,110 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# The Tyken Group Website
 
-## Getting Started
+A modern, responsive website for The Tyken Group — a full-service staffing and recruiting consultancy serving the Puget Sound region since 2006.
 
-First, run the development server:
+**Live Site:** [https://iurman.github.io/tyken-updated/](https://iurman.github.io/tyken-updated/)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Tech Stack
+
+- **Framework:** Next.js 16 (App Router)
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS 4
+- **Animations:** Framer Motion
+- **Icons:** Lucide React
+- **Deployment:** GitHub Pages (static export)
+
+## Project Structure
+
+```
+src/
+├── app/                    # Next.js App Router pages
+│   ├── layout.tsx          # Root layout with header/footer
+│   ├── page.tsx            # Home page
+│   ├── about/              # About page
+│   ├── leadership/         # Leadership page
+│   ├── opportunities/      # Opportunities page
+│   └── contact/            # Contact page
+├── components/
+│   ├── Header.tsx          # Site header with navigation
+│   ├── Footer.tsx          # Site footer
+│   └── ui/                 # Reusable UI components
+│       ├── Button.tsx      # Button (primary/secondary/outline)
+│       ├── Card.tsx        # Card and IconCard components
+│       ├── PageHero.tsx    # Hero section with background
+│       └── Section.tsx     # Section wrapper and header
+├── lib/
+│   └── constants.ts        # Site config and shared constants
+└── app/globals.css         # Global styles and CSS variables
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Design System
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Colors
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Name | Hex | Usage |
+|------|-----|-------|
+| Dark | `#322c1d` | Background, dark elements |
+| Medium | `#7b5d1a` | Hover states, borders |
+| Golden | `#b8860b` | Primary buttons, accents |
+| Light Golden | `#a5965d` | Links, secondary accents |
+| Tan | `#c3b98b` | Body text |
+| Cream | `#eae4ce` | Headings, button text |
 
-## Learn More
+### Components
 
-To learn more about Next.js, take a look at the following resources:
+- **Button:** Three variants — `primary` (gold), `secondary` (white), `outline` (bordered)
+- **Card:** Glass-effect cards with subtle borders
+- **PageHero:** Full-width hero with background image
+- **Section:** Consistent padding with optional backgrounds (`default`, `muted`, `accent`)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Development
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+# Install dependencies
+npm install
 
-## Deploy on Vercel
+# Start dev server
+npm run dev
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+# Build for production
+npm run build
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+# Run linter
+npm run lint
+```
+
+## Deployment
+
+The site deploys automatically to GitHub Pages when pushing to `main`. The workflow:
+
+1. Builds the Next.js app with static export
+2. Uploads the `out/` directory as an artifact
+3. Deploys to GitHub Pages
+
+To deploy manually:
+
+```bash
+npm run build
+# The static site is in the `out/` directory
+```
+
+## Configuration
+
+Site-wide configuration is centralized in `src/lib/constants.ts`:
+
+```typescript
+export const siteConfig = {
+  name: "The Tyken Group",
+  tagline: "A Full-Service Consultancy",
+  contact: {
+    email: "seth@tykengroup.com",
+    phone: "+1 206.851.3894",
+    location: "Woodinville, WA",
+  },
+  // ...
+};
+```
+
+## License
+
+All rights reserved. This website was built for The Tyken Group.
