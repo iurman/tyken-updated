@@ -5,6 +5,8 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight, Users, Briefcase, Target, CheckCircle } from "lucide-react";
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
+
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
   animate: { opacity: 1, y: 0 },
@@ -27,7 +29,7 @@ export default function Home() {
         <div 
           className="absolute inset-0 opacity-20"
           style={{
-            backgroundImage: "url('/images/img2.jpg')",
+            backgroundImage: `url('${basePath}/images/img2.jpg')`,
             backgroundRepeat: "repeat-x",
             backgroundPosition: "top"
           }}

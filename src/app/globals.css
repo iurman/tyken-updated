@@ -38,7 +38,7 @@ html {
 }
 
 body {
-  background: var(--tyken-dark-brown) url('/images/img1.jpg');
+  background: var(--tyken-dark-brown);
   color: var(--tyken-tan);
   font-family: var(--font-sans), system-ui, sans-serif;
   min-height: 100vh;
