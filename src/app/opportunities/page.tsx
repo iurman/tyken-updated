@@ -4,6 +4,8 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { Sparkles, Users, TrendingUp, Shield, ArrowRight } from "lucide-react";
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
+
 const benefits = [
   {
     icon: TrendingUp,
@@ -29,25 +31,37 @@ const benefits = [
 
 export default function OpportunitiesPage() {
   return (
-    <div className="min-h-screen py-16 md:py-24">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Hero */}
-        <motion.div 
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          <h1 className="text-4xl md:text-5xl font-bold text-tyken-cream mb-6">
-            Opportunities
-          </h1>
-          <div className="w-24 h-1 bg-tyken-golden mx-auto rounded-full mb-8" />
-          <p className="text-xl text-tyken-tan/90 max-w-3xl mx-auto leading-relaxed">
-            At The Tyken Group, our opportunities change on a daily basis. One thing, 
-            however, that never changes is our refusal to settle for mediocrity.
-          </p>
-        </motion.div>
+    <div className="min-h-screen">
+      {/* Hero Section */}
+      <section className="relative py-20 md:py-32 overflow-hidden">
+        <div 
+          className="absolute inset-0 opacity-20"
+          style={{
+            backgroundImage: `url('${basePath}/images/img2.jpg')`,
+            backgroundRepeat: "repeat-x",
+            backgroundPosition: "top"
+          }}
+        />
+        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div 
+            className="text-center"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+          >
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-tyken-cream mb-6 leading-tight">
+              Opportunities
+            </h1>
+            <p className="text-xl md:text-2xl text-tyken-tan/90 max-w-3xl mx-auto leading-relaxed">
+              At The Tyken Group, our opportunities change on a daily basis. One thing, 
+              however, that never changes is our refusal to settle for mediocrity.
+            </p>
+          </motion.div>
+        </div>
+      </section>
 
+      {/* Content */}
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {/* Main Content */}
         <motion.div 
           className="bg-tyken-cream/5 backdrop-blur-sm border border-tyken-medium/30 rounded-2xl p-8 md:p-12 mb-16"

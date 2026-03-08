@@ -4,6 +4,8 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { Mail, Phone, Linkedin, MapPin, Quote } from "lucide-react";
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
+
 const testimonials = [
   {
     text: "Seth has provided contract management, leadership, conflict resolution, and guidance for a decade of my career. No matter the scenario, his advice taught me how to regain control, reset expectations, and grow relationships. Holidays, weekends, or middle of the night, he was always available and willing. Stepping up even for trivial requests. Remaining professional and calm, he cultured friendships and taught continuous improvement skills. Truly above and beyond any expectation or requirement. My sincere thank you for everything Seth, I am honored to have been part of your team.",
@@ -17,21 +19,36 @@ const testimonials = [
 
 export default function LeadershipPage() {
   return (
-    <div className="min-h-screen py-16 md:py-24">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Hero */}
-        <motion.div 
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          <h1 className="text-4xl md:text-5xl font-bold text-tyken-cream mb-6">
-            Leadership
-          </h1>
-          <div className="w-24 h-1 bg-tyken-golden mx-auto rounded-full" />
-        </motion.div>
+    <div className="min-h-screen">
+      {/* Hero Section */}
+      <section className="relative py-20 md:py-32 overflow-hidden">
+        <div 
+          className="absolute inset-0 opacity-20"
+          style={{
+            backgroundImage: `url('${basePath}/images/img2.jpg')`,
+            backgroundRepeat: "repeat-x",
+            backgroundPosition: "top"
+          }}
+        />
+        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div 
+            className="text-center"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+          >
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-tyken-cream mb-6 leading-tight">
+              Leadership
+            </h1>
+            <p className="text-xl md:text-2xl text-tyken-tan/90 max-w-3xl mx-auto leading-relaxed">
+              Meet the team behind The Tyken Group
+            </p>
+          </motion.div>
+        </div>
+      </section>
 
+      {/* Content */}
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {/* Seth Sigel Profile */}
         <motion.div 
           className="bg-tyken-cream/5 backdrop-blur-sm border border-tyken-medium/30 rounded-2xl p-8 md:p-12 mb-16"

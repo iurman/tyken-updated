@@ -3,27 +3,41 @@
 import { motion } from "framer-motion";
 import { Mail, Phone, MapPin, Linkedin, Clock, ExternalLink } from "lucide-react";
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
+
 export default function ContactPage() {
   return (
-    <div className="min-h-screen py-16 md:py-24">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Hero */}
-        <motion.div 
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          <h1 className="text-4xl md:text-5xl font-bold text-tyken-cream mb-6">
-            Contact Us
-          </h1>
-          <div className="w-24 h-1 bg-tyken-golden mx-auto rounded-full mb-8" />
-          <p className="text-xl text-tyken-tan/90 max-w-2xl mx-auto leading-relaxed">
-            We look forward to hearing from you! Let&apos;s start a conversation about 
-            how we can help you succeed.
-          </p>
-        </motion.div>
+    <div className="min-h-screen">
+      {/* Hero Section */}
+      <section className="relative py-20 md:py-32 overflow-hidden">
+        <div 
+          className="absolute inset-0 opacity-20"
+          style={{
+            backgroundImage: `url('${basePath}/images/img2.jpg')`,
+            backgroundRepeat: "repeat-x",
+            backgroundPosition: "top"
+          }}
+        />
+        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div 
+            className="text-center"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+          >
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-tyken-cream mb-6 leading-tight">
+              Contact Us
+            </h1>
+            <p className="text-xl md:text-2xl text-tyken-tan/90 max-w-3xl mx-auto leading-relaxed">
+              We look forward to hearing from you! Let&apos;s start a conversation about 
+              how we can help you succeed.
+            </p>
+          </motion.div>
+        </div>
+      </section>
 
+      {/* Content */}
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid lg:grid-cols-2 gap-8">
           {/* Contact Info */}
           <motion.div 
